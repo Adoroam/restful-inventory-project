@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 // NOTE: ROUTES
 app.use('/api', require('./routes/api'))
 app.get('/', (req, res) => {
-  res.redirect('/dist/')
+  res.redirect('/')
 })
 
 // NOTE: START SERVER

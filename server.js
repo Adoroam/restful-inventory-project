@@ -15,6 +15,9 @@ app.use('/api', require('./routes/api'))
 app.get('/', (req, res) => {
   res.redirect('/')
 })
+app.get('/*', (req, res) => {
+  res.redirect('/whoops')
+})
 
 // NOTE: START SERVER
 app.listen(80, () => { console.log(`server listening on port 80`) })

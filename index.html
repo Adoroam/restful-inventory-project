@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
   <head>
     <meta charset="utf-8">
-    <title>Herp</title>
+    <title>API Testing</title>
+    <script src="/bower_components/angular/angular.min.js" charset="utf-8"></script>
+    <script src="/libs/js/ang.js" charset="utf-8"></script>
   </head>
   <body>
-    <p>wot?</p>
+    <div class="products" ng-controller="prodCtrl as prod">
+      <h2>Products</h2>
+      <!--  NEW MODE -->
+      <table ng-if="prod.mode === 'new'">
+        <tr><th colspan="2">New Product</th></tr>
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" ng-model="prod.name" placeholder="name"></td>
+        </tr>
+        <tr>
+          <td>Sku:</td>
+          <td><input type="text" ng-model="prod.sku" placeholder="sku"></td>
+        </tr>
+        <tr>
+          <td>Price:</td>
+          <td><input type="number" ng-model="prod.price"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button type="button" ng-click="prod.save()">Save Product</button></td>
+        </tr>
+      </table>
+      <!--  EDIT MODE -->
+      <table ng-if="prod.mode === 'edit'">
+        <tr><th colspan="2">Edit Product</th></tr>
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" ng-model="prod.editItem.name" placeholder="name"></td>
+        </tr>
+        <tr>
+          <td>Sku:</td>
+          <td><input type="text" ng-model="prod.editItem.sku" placeholder="sku"></td>
+        </tr>
+        <tr>
+          <td>Price:</td>
+          <td><input type="number" ng-model="prod.editItem.price"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button type="button" ng-click="prod.update()">Update Product</button></td>
+        </tr>
+      </table>
+      <dl ng-repeat="item in prod.items">
+        <dd>{{item._id}}</dd>
+        <dd>{{item.name}}</dd>
+        <dd>{{item.sku}}</dd>
+        <dd>{{item.price}}</dd>
+        <dd>
+          <button type="button" ng-click="prod.edit(item._id)">edit</button>
+          <button type="button" ng-click="prod.delete(item._id)">delete</button>
+        </dd>
+      </dl>
+    </div><!-- END PRODUCTS -->
+
   </body>
 </html>

@@ -37,7 +37,7 @@ app.controller('homeCtrl', ['$location', function ($location) {
     var qy = url.indexOf('?')
     var str = url.substring(0, qy)
     $location.url(str)
-  };
+  }
 }])
 
 // NOTE: PROD CTRL

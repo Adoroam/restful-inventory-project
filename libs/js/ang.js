@@ -50,14 +50,10 @@ app.controller('prodCtrl', ['$scope', '$http', function ($scope, $http) {
     prod.price = ''
     prod.qty = ''
   }
-  prod.marked = []
   prod.refresh = function () {
     db.get('products').then(function (d) {
       prod.items = d.data
     })
-  }
-  prod.eh = function () {
-    console.log(prod.marked)
   }
   prod.refresh()
 }])

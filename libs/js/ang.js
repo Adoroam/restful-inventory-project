@@ -1,11 +1,6 @@
 // define angular app
 const app = angular.module('app', [])
 
-// service for fetching api data
-// app.factory('dbget', function ($http) {
-//   return $http.post('/db')
-// })
-
 // controller
 app.controller('prodCtrl', ['$scope', '$http', function ($scope, $http) {
   let prod = this
@@ -26,7 +21,8 @@ app.controller('prodCtrl', ['$scope', '$http', function ($scope, $http) {
     let item = {
       name: prod.name || 'unnamed',
       sku: prod.sku || 'no sku',
-      price: prod.price || 0
+      price: prod.price || 0,
+      qty: prod.qty || 1
     }
     db.post('products', item).then(prod.refresh()).then(prod.clear())
   }
@@ -43,7 +39,6 @@ app.controller('prodCtrl', ['$scope', '$http', function ($scope, $http) {
   }
   prod.update = function () {
     let item = prod.editItem
-    console.log(item)
     db.put('products', item).then(prod.refresh()).then(function () {
       prod.mode = 'new'
     })
@@ -53,12 +48,16 @@ app.controller('prodCtrl', ['$scope', '$http', function ($scope, $http) {
     prod.name = ''
     prod.sku = ''
     prod.price = ''
+    prod.qty = ''
   }
+  prod.marked = []
   prod.refresh = function () {
     db.get('products').then(function (d) {
       prod.items = d.data
     })
   }
+  prod.eh = function () {
+    console.log(prod.marked)
+  }
   prod.refresh()
-  // db functions
 }])

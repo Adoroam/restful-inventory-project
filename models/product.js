@@ -5,7 +5,8 @@ const mongoose = restful.mongoose
 let productSchema = new mongoose.Schema({
   name: String,
   sku: String,
-  price: Number
+  price: Number,
+  qty: Number
 })
 
 // NOTE: RETURN MODEL

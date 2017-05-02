@@ -1,0 +1,11 @@
+body {
+  background: url('https://media.musely.com/u/5d107d69-7d65-49a7-88ad-6ea74e1c5abc.jpg')
+}
+div.page-header {
+  margin-top: 0;
+  padding-top: 1em;
+  background-color: white;
+}
+.page-header h1 {
+  margin-top: 0;
+}

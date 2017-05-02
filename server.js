@@ -16,8 +16,12 @@ app.get('/', (req, res) => {
   res.redirect('/')
 })
 app.get('/*', (req, res) => {
-  res.redirect('/whoops')
+  let pr = req.params['0']
+  res.redirect(`/?redirect=${pr}`)
 })
+// app.get('/*', (req, res) => {
+//   res.redirect('/whoops')
+// })
 
 // NOTE: START SERVER
 app.listen(80, () => { console.log(`server listening on port 80`) })

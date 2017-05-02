@@ -10,143 +10,23 @@
     <script type="text/javascript" src="libs/prop/bootstrap.js"></script>
     <script type="text/javascript" src="libs/prop/propeller.js"></script>
     <script src="/bower_components/angular/angular.min.js" charset="utf-8"></script>
-    <script src="/libs/js/ang.js" charset="utf-8"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
+    <script src="/libs/ang.js" charset="utf-8"></script>
     <base href="/">
   	<meta name="viewport" content="width=device-width">
   </head>
-  <body ondragleave=""ng-controller="prodCtrl as prod">
+  <body>
     <div class="container-fluid">
+
       <div class="row">
         <div class="page-header text-center">
-          <h1>Product List</h1>
+          <h1>I did a thing!</h1>
         </div>
       </div>
+
       <div class="row">
-        <div class="container">
-          <div class="pmd-card pmd-card-default pmd-z-depth">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table pmd-table table-striped">
-                  <thead>
-                    <tr>
-                      <th>name</th>
-                      <th>quantity</th>
-                      <th>price</th>
-                      <th>sku</th>
-                      <th>edit</th>
-                      <th>delete</th>
-                      <!-- <th>id</th> -->
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="item in prod.items | filter : prod.search | filter : prod.sku">
-                      <td>{{item.name}}</td>
-                      <td>{{item.qty}}</td>
-                      <td>{{item.price | currency}}</td>
-                      <td>{{item.sku}}</td>
-                      <!-- <td> {{item._id}}</td> -->
-                      <td>
-                        <button type="button" data-target="#edit" data-toggle="modal" ng-click="prod.edit(item._id)" class="btn pmd-ripple-effect btn-primary">edit</button>
-                      </td>
-                      <td>
-                        <button type="button" ng-click="prod.delete(item._id)" class="btn pmd-ripple-effect btn-danger">delete</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="pmd-card-actions">
-              <button data-target="#add" data-toggle="modal" class="btn pmd-ripple-effect btn-success pmd-z-depth" type="button">Add Product</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="container">
-          <div class="pmd-card pmd-card-default pmd-z-depth">
-            <div class="pmd-card-body">
-              <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                <label>Search By Sku</label>
-                <input type="text" class="mat-input form-control" ng-model="prod.search">
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="view" ng-view>loading...</div>
       </div>
     </div>
-<!--  NEW MODE -->
-<div tabindex="-1" class="modal fade" id="add" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header pmd-modal-bordered">
-        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-        <h2 class="pmd-card-title-text">New Product</h2>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal">
-          <div class="form-group pmd-textfield pmd-textfield-floating-label">
-            <label>Name</label>
-            <input type="text" class="mat-input form-control" ng-model="prod.name">
-          </div>
-          <div class="form-group pmd-textfield pmd-textfield-floating-label">
-            <label>Sku</label>
-            <input type="text" class="mat-input form-control" ng-model="prod.sku">
-          </div>
-          <div class="form-group pmd-textfield pmd-textfield-floating-label">
-            <label>Price</label>
-            <input type="number" class="mat-input form-control" ng-model="prod.price">
-          </div>
-          <div class="form-group pmd-textfield pmd-textfield-floating-label">
-            <label>Quantity</label>
-            <input type="number" class="mat-input form-control" ng-model="prod.qty">
-          </div>
-        </form>
-      </div>
-      <div class="pmd-modal-action">
-        <button data-dismiss="modal"  class="btn pmd-ripple-effect btn-success" type="button" ng-click="prod.save()">Save Changes</button>
-        <button data-dismiss="modal"  class="btn pmd-ripple-effect btn-default" type="button">Discard</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--  EDIT MODE -->
-<div tabindex="-1" class="modal fade" id="edit" style="display: none;" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-  <div class="modal-header pmd-modal-bordered">
-    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-    <h2 class="pmd-card-title-text">Edit Product</h2>
-  </div>
-  <div class="modal-body">
-    <form class="form-horizontal">
-      <div class="form-group pmd-textfield pmd-textfield-floating-label">
-        <label>Name</label>
-        <input type="text" class="mat-input form-control" ng-model="prod.editItem.name" value="{{prod.editItem.name}}">
-      </div>
-        <div class="form-group pmd-textfield pmd-textfield-floating-label">
-          <label>Sku</label>
-          <input type="text" class="mat-input form-control" ng-model="prod.editItem.sku" value="{{prod.editItem.sku}}">
-        </div>
-        <div class="form-group pmd-textfield">
-          <label>Price</label>
-          <input type="number" class="mat-input form-control" ng-model="prod.editItem.price">
-        </div>
-        <div class="form-group pmd-textfield">
-          <label>Quantity</label>
-          <input type="number" class="mat-input form-control" ng-model="prod.editItem.qty">
-        </div>
-      </form>
-      </div>
-      <div class="pmd-modal-action">
-        <button data-dismiss="modal"  class="btn pmd-ripple-effect btn-success" type="button" ng-click="prod.update()">Save Changes</button>
-        <button data-dismiss="modal"  class="btn pmd-ripple-effect btn-default" type="button">Discard</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
   </body>
 </html>

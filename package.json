@@ -9,10 +9,13 @@
   "author": "Anthony Stabile",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
     "body-parser": "^1.17.1",
-    "bower": "^1.8.0",
     "express": "^4.15.2",
     "mongoose": "^4.9.3",
-    "node-restful": "^0.2.6"
+    "node-restful": "^0.2.6",
+    "propellerkit": "^1.1.0",
+    "yarn": "^0.24.4"
   }
 }

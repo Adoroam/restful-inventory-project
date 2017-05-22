@@ -9,3 +9,6 @@ div.page-header {
 .page-header h1 {
   margin-top: 0;
 }
+html {
+  font-family: sans-serif;
+}

@@ -11,11 +11,14 @@
   "dependencies": {
     "angular": "^1.6.4",
     "angular-route": "^1.6.4",
+    "axios": "^0.16.2",
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongoose": "^4.9.3",
     "node-restful": "^0.2.6",
     "propellerkit": "^1.1.0",
+    "save": "^2.3.1",
     "yarn": "^0.24.4"
   }
 }

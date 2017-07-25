@@ -30,13 +30,13 @@ app.controller('homeCtrl', ['$location', function ($location) {
   if ($location.search()) {
         // find query to convert
     var addr = $location.search()
-    addr = addr.redirect
+    addr = addr.re
     $location.path(addr)
         // remove query from path
-    var url = $location.url()
-    var qy = url.indexOf('?')
-    var str = url.substring(0, qy)
-    $location.url(str)
+    // var url = $location.url()
+    // var qy = url.indexOf('?')
+    // var str = url.substring(0, qy)
+    $location.url(addr)
   }
 }])
 
